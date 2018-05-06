@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{F2E27E75-8DD5-EEA6-E4A2-35CC782CA8FD}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MainMenu/BackToMainMenu.cs">
+    <Files>
+      <File FileName="Assets/Scripts/MainMenu/MainMenu.cs" Line="22" Column="19" />
+      <File FileName="Assets/Scripts/MainMenu/LevelSelection.cs" Line="31" Column="68" />
+      <File FileName="Assets/Scripts/Models/Level.cs" Line="5" Column="29" />
+      <File FileName="Assets/Scripts/MainMenu/BackToMainMenu.cs" Line="8" Column="8" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
