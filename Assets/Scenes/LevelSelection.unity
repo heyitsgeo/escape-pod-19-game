@@ -617,18 +617,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51abbbf4b6d5d44c8c94ae48d050ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 57092667}
-  UnlockedPrefab: {fileID: 114502909263811418, guid: d7f82d76596cd4f28b9b462135033eaa,
+  _canvas: {fileID: 57092667}
+  _unlockedPrefab: {fileID: 114502909263811418, guid: d7f82d76596cd4f28b9b462135033eaa,
     type: 2}
-  LockedPrefab: {fileID: 114109868084585706, guid: 7857a9a14637c4e1ca8af806b5cadfc2,
+  _lockedPrefab: {fileID: 114109868084585706, guid: 7857a9a14637c4e1ca8af806b5cadfc2,
     type: 2}
-  Levels:
-  - SceneName: Level_1
-    LevelName: Level 1
-    Locked: 0
-  - SceneName: Level_2
-    LevelName: Level 2
-    Locked: 1
+  _levels:
+  - _sceneName: 
+    _levelName: 
+    _locked: 0
+  - _sceneName: 
+    _levelName: 
+    _locked: 0
   buttonPadding: 10
   firstButtonLeftEdge: 250
 --- !u!4 &1875517398
