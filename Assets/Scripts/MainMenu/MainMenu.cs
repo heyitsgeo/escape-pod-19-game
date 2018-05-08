@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour {
     public string menu_levelSceneName;
 
 	// Use this for initialization
-	void Start () {
+    protected void Start () {
         Button start = menu_StartButton.GetComponent<Button>();
         Button quit = menu_QuitButton.GetComponent<Button>();
 
@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void LoadLevelsScene () {
+	protected void LoadLevelsScene () {
         try
         {
             Debug.Log("Load Levels");

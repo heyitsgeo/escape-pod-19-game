@@ -1,49 +1,65 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿namespace Assets.Scripts.Controllers
+{
+  using Assets.Scripts.Models;
+  using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+  public class PlayerController : MonoBehaviour
+  {
+    private PlayerModel _player;
 
-    public int playerSpeed = 4;
-    private bool p_facingUp = false;
-    private bool p_facingRight = false;
+    public PlayerController()
+    {
+      _player = new PlayerModel();
+    }
 
-	// Use this for initialization
-    void Start () {}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        // Zero out veloxity to prevent player from sliding.
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        float moveVertical = Input.GetAxis("Vertical");
-        float moveHorizontal = Input.GetAxis("Horizontal");
+    protected void Start()
+    {
+      _player.PlayerSpeed = 5;
+      _player.FacingRight = false;
+      _player.FacingUp = false;
+    }
 
-        if (moveVertical > 0 || moveVertical < 0) {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, moveVertical * playerSpeed);
+    // Update is called once per frame
+    protected void FixedUpdate()
+    {
+      // Lock rotation. This prevents player from dragging against object and spinning.
+      GetComponent<Rigidbody2D>().freezeRotation = true;
+      // Zero out velocity to prevent player from sliding.
+      GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+      float moveVertical = Input.GetAxis("Vertical");
+      float moveHorizontal = Input.GetAxis("Horizontal");
 
-            if (moveVertical > 0 && !p_facingUp) {
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, -180));
-                p_facingUp = true;
-            } else if (moveVertical < 0 && p_facingUp) {
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                p_facingUp = false;
-            }
-        }
+      if (moveVertical > 0 || moveVertical < 0)
+      {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, moveVertical * _player.PlayerSpeed);
 
-        if (moveHorizontal > 0 || moveHorizontal < 0)
+        if (moveVertical > 0 && !_player.FacingUp)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(moveHorizontal * playerSpeed, GetComponent<Rigidbody2D>().velocity.y);
-
-            if (moveHorizontal > 0 && !p_facingRight)
-            {
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
-                p_facingRight = true;
-            }
-            else if (moveHorizontal < 0 && p_facingRight)
-            {
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
-                p_facingRight = false;
-            }
+          transform.rotation = Quaternion.Euler(new Vector3(0, 0, -180));
+          _player.FacingUp = true;
         }
-	}
+        else if (moveVertical < 0 && _player.FacingUp)
+        {
+          transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+          _player.FacingUp = false;
+        }
+      }
+
+      if (moveHorizontal > 0 || moveHorizontal < 0)
+      {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(moveHorizontal * _player.PlayerSpeed, GetComponent<Rigidbody2D>().velocity.y);
+
+        if (moveHorizontal > 0 && !_player.FacingRight)
+        {
+          transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+          _player.FacingRight = true;
+        }
+        else if (moveHorizontal < 0 && _player.FacingRight)
+        {
+          transform.rotation = Quaternion.Euler(new Vector3(0, 0, -90));
+          _player.FacingRight = false;
+        }
+      }
+    }
+  }
 }
