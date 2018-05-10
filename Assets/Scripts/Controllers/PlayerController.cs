@@ -7,7 +7,8 @@
     {
         [SerializeField]
         private PlayerModel _player;
-
+        private bool handleInput = true;
+        private InteractionController currentInteractable;
         public PlayerController()
         {
             _player = new PlayerModel();
@@ -61,6 +62,11 @@
                     _player.FacingRight = false;
                 }
             }
+        }
+
+        public void OnInteractableClick(InteractionController interactable)
+        {
+            Debug.Log("Interaction Confirmed");
         }
     }
 }

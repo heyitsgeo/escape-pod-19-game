@@ -2,15 +2,14 @@
 {
     using UnityEngine;
 
+    // This simple script represents Items that can be picked
+    // up in the game.  The inventory system is done using
+    // this script instead of just sprites to ensure that items
+    // are extensible.
     [CreateAssetMenu]
-    public class ItemModel
+    public class ItemModel : ScriptableObject
     {
-        [SerializeField]
-        private Sprite _itemSprite;
-        public Sprite ItemSprite
-        {
-            get { return _itemSprite; }
-            set { _itemSprite = value; }
-        }
+        public Sprite sprite;
     }
+
 }
