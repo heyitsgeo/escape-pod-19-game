@@ -2,16 +2,25 @@
 {
     using Assets.Scripts.Models;
     using UnityEngine;
+    using UnityEngine.EventSystems;
 
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
         private PlayerModel _player;
+
+        [SerializeField]
+        private bool characterHitItem;
+
+        [SerializeField]
+        private InventoryController _inventoryController;
+
         private bool handleInput = true;
-        private InteractionController currentInteractable;
+        
         public PlayerController()
         {
-            _player = new PlayerModel();
+            //_player = new PlayerModel();
+            //_inventoryController = new InventoryController();
         }
 
         protected void Start()
@@ -64,9 +73,19 @@
             }
         }
 
-        public void OnInteractableClick(InteractionController interactable)
+        public void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("Interaction Confirmed");
+            if (collision.CompareTag("AirTank"))
+            {
+                var item = collision.gameObject;
+                var airTankItem = new ItemModel()
+                {
+                    sprite = item.GetComponent<SpriteRenderer>().sprite,
+                    name = "Air Tank"
+                };
+                _inventoryController.AddItem(airTankItem);
+                collision.gameObject.SetActive(false);
+            }
         }
     }
 }
