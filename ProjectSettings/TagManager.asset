@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - AirTank
+=======
+  - DamageZone
+>>>>>>> 2b36261... Added boilerplate for damage zone
   layers:
   - Default
   - TransparentFX

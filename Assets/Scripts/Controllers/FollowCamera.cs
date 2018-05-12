@@ -1,15 +1,15 @@
 ﻿namespace Assets.Scripts.Controllers
 {
-    using UnityEngine;
+  using UnityEngine;
 
-    public class FollowCamera : MonoBehaviour
+  public class FollowCamera : MonoBehaviour
+  {
+    public Transform player;
+    public Vector3 offset;
+
+    protected void Update()
     {
-        public Transform player;
-        public Vector3 offset;
-
-        protected void FixedUpdate()
-        {
-            transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, offset.z);
-        }
+      transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, offset.z);
     }
+  }
 }

@@ -6,11 +6,12 @@
 
   public class LevelTileController : MonoBehaviour
   {
-    public GameObject Target;
+    private GameObject Player;
 
 
     protected void Start()
     {
+      Player = GameObject.FindGameObjectWithTag("Player");
       Color tempColor = GetComponent<SpriteRenderer>().color;
       tempColor.a = 0;
       GetComponent<SpriteRenderer>().color = tempColor;
@@ -19,12 +20,12 @@
     protected void FixedUpdate()
     {
       Color tempColor = GetComponent<SpriteRenderer>().color;
-      if (Vector2.Distance(transform.position, Target.transform.position) < 3)
+      if (Vector2.Distance(transform.position, Player.transform.position) < 3)
       {
         tempColor.a = 1;
         GetComponent<SpriteRenderer>().color = tempColor;
       }
-      else if (Vector2.Distance(transform.position, Target.transform.position) < 6)
+      else if (Vector2.Distance(transform.position, Player.transform.position) < 6)
       {
         tempColor.a = 0.5f;
         GetComponent<SpriteRenderer>().color = tempColor;
@@ -48,22 +49,6 @@
         _renderer.color = tempColor;
         yield return null;
       }
-    }
-
-    private bool IsFacingObject()
-    {
-      // Check if the gaze is looking at the front side of the object
-      Vector3 forward = Target.transform.up;
-      Vector3 toOther = (transform.position - Target.transform.position).normalized;
-
-      if (Vector3.Dot(forward, toOther) < 0.7f)
-      {
-        Debug.Log("Not facing the object");
-        return false;
-      }
-
-      Debug.Log("Facing the object");
-      return true;
     }
   }
 }
